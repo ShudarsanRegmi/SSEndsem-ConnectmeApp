@@ -1,0 +1,30 @@
+# ConnectMe .gitignore
+# Environment and Secrets
+.env
+.env.local
+*.pem
+*.key
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Testing and Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Local databases and uploads
+*.db
+*.sqlite3
+secure_media/
+media/
+uploads/
+.DS_Store
