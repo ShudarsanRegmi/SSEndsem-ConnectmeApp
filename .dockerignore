@@ -11,4 +11,5 @@ htmlcov
 tests/
 secure_media/
 infra/
+frontend/node_modules/
 *.md

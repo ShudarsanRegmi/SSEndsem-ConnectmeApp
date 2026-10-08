@@ -3,14 +3,19 @@ output "vpc_id" {
   description = "VPC ID of the environment"
 }
 
-output "instance_id" {
-  value       = aws_instance.app_server.id
-  description = "EC2 instance ID"
+output "alb_dns_name" {
+  value       = aws_lb.main.dns_name
+  description = "Public DNS name of the Application Load Balancer"
 }
 
-output "instance_public_ip" {
-  value       = aws_instance.app_server.public_ip
-  description = "Public IP address of the 4GB EC2 instance"
+output "ecs_cluster_name" {
+  value       = aws_ecs_cluster.main.name
+  description = "ECS Cluster Name"
+}
+
+output "ecs_service_name" {
+  value       = aws_ecs_service.main.name
+  description = "ECS Service Name"
 }
 
 output "s3_bucket_arn" {

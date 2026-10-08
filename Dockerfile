@@ -29,8 +29,9 @@ ENV PATH=/home/appuser/.local/bin:$PATH
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
-# Copy application source code
+# Copy application source code and built React frontend
 COPY --chown=appuser:connectme app/ /app/app/
+COPY --chown=appuser:connectme frontend/dist/ /app/frontend/dist/
 
 # Create and configure isolated non-executable media upload directory
 RUN mkdir -p /app/secure_media && \
