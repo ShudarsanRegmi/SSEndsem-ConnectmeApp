@@ -36,9 +36,9 @@ def add_comment(
     user_id = current_user["user_id"]
     client_ip = request.client.host if request.client else "unknown"
 
-    # Strict Anti-XSS Sanitization
-    clean_text = sanitize_input(payload.comment_text)
-    if not clean_text:
+    # Strict Anti-XSS Sanitization on Comment Field (CWE-79 Remediation)
+    clean_text = sanitize_input(payload.comment_text.strip())
+    if not clean_text or len(clean_text) == 0:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Comment cannot be blank.")
 
     with get_db() as conn:

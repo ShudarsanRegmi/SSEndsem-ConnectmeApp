@@ -16,8 +16,8 @@ export default function PostCard({ post, onPostDeleted, onSelectUser }) {
   const [submittingComment, setSubmittingComment] = useState(false);
   const [deleting, setDeleting] = useState(false);
 
-  const API_BASE = "http://127.0.0.1:8000";
-  const fullImageUrl = post.image_url.startsWith("http") ? post.image_url : `${API_BASE}${post.image_url}`;
+  // Relative media URL for same-origin production deployment
+  const fullImageUrl = post.image_url;
 
   // Check if current authenticated user owns this post (Anti-IDOR UI Gate)
   const isAuthor = user && (user.id === post.user_id || user.user_id === post.user_id);
