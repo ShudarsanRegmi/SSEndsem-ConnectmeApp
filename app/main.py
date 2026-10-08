@@ -62,3 +62,9 @@ def health_check():
         "service": "ConnectMe Secure API",
         "environment": settings.APP_ENV
     }
+
+# Mount Built React Frontend Single Page Application
+FRONTEND_DIST = os.path.join(os.path.dirname(os.path.dirname(__file__)), "frontend", "dist")
+if os.path.exists(FRONTEND_DIST):
+    app.mount("/", StaticFiles(directory=FRONTEND_DIST, html=True), name="frontend")
+
