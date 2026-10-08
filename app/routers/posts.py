@@ -169,6 +169,7 @@ def delete_post(
                     ip_address=client_ip,
                     details=f"User {user_id} attempted unauthorized deletion of Post {post_id} owned by User {post['user_id']}"
                 )
+                conn.commit()
                 raise HTTPException(
                     status_code=status.HTTP_403_FORBIDDEN,
                     detail="Access Denied: You do not have permission to delete this post."
