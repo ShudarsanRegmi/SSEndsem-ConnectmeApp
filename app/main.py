@@ -43,7 +43,10 @@ async def add_security_headers(request: Request, call_next):
 @app.on_event("startup")
 def on_startup():
     os.makedirs(settings.UPLOAD_DIRECTORY, exist_ok=True)
-    init_db()
+    try:
+        init_db()
+    except Exception as e:
+        print(f"Database initialization postponed: {e}")
 
 # Mount Static Secure Media Directory
 os.makedirs(settings.UPLOAD_DIRECTORY, exist_ok=True)
